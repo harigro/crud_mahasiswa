@@ -4,7 +4,7 @@ namespace Apps\Models;
 use Apps\Database;
 use PDO;
 
-class Telephone {
+class Mahasiswa {
     private $db;
 
     public function __construct() {
@@ -17,12 +17,12 @@ class Telephone {
     }
 
     public function getUsernameRegistrasi() {
-        $stmt = $this->db->query("SELECT nama FROM regis");
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = $this->db->query("SELECT nama FROM registrasi");
+        return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
 
-    public function create($nama, $email, $kata_sandi) {
-        $stmt = $this->db->prepare("INSERT INTO mahasiswa (nama, email, kata_sandi) VALUES (?, ?, ?)");
+    public function createRegistarsi($nama, $email, $kata_sandi) {
+        $stmt = $this->db->prepare("INSERT INTO registrasi (nama, email, kata_sandi) VALUES (?, ?, ?)");
         return $stmt->execute([$nama, $email, $kata_sandi]);
     }
 
