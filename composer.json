@@ -1,0 +1,23 @@
+{
+    "name": "proyek/registarsi",
+    "description": "aplikasi registrasi, login dan logout menggunakan kerangka kerja flight, flates dan berarsitektur mvc.",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Apps\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "harigro",
+            "email": "trierbank@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "mikecao/flight": "^3.13",
+        "vlucas/phpdotenv": "^5.6",
+        "league/plates": "^3.6"
+    }
+}
