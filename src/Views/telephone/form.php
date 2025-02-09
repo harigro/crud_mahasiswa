@@ -2,7 +2,7 @@
 <body>
     <div class="container mt-5">
         <h2 class="mb-4">Form Registrasi</h2>
-        <form method="POST" action="./register" class="needs-validation" novalidate>
+        <form method="POST" action="./register/store" class="needs-validation" novalidate>
             <div class="mb-3">
                 <label for="nama" class="form-label">Nama Lengkap</label>
                 <input type="text" class="form-control" id="nama" name="nama_lengkap" required>

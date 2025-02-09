@@ -16,7 +16,7 @@ class TelephoneController {
     }
 
     public function index() {
-        echo $this->templates->render('telephone/index', ['items' => $this->telephone->getAll()]);
+        echo $this->templates->render('telephone/index', ['items' => $this->telephone->getAllDataMahasiswa()]);
     }
 
     public function register() {
@@ -25,14 +25,19 @@ class TelephoneController {
 
     public function store(callable $redirectTo): void {
         if (Flight::request()->method === "POST") {
-            $nama = trim($_POST['nama'] ?? '');
-            $telepon = trim($_POST['telepon'] ?? '');
+            $nama = trim($_POST['nama_lengkap'] ?? '');
+            $email = trim($_POST['email'] ?? '');
+            $kata_sandi = trim($_POST['password'] ?? '');
+            $k_kata_sandi = trim($_POST['konfirmasi_password'] ?? '');
+
+            echo $nama, $email, $kata_sandi, $k_kata_sandi; 
     
-            if ($nama === '' || $telepon === '') {
+            if ($nama === '' || $email === '' || $kata_sandi === '' || $k_kata_sandi === '' ) {
                 echo $this->templates->render('Telephone/404');
             } else {
-                $this->telephone->create($nama, $telepon);
+                $this->telephone->create($nama, $email, $kata_sandi);
             $redirectTo();
+            exit;
             }
         }
     }

@@ -11,14 +11,19 @@ class Telephone {
         $this->db = Database::getInstance();
     }
 
-    public function getAll() {
-        $stmt = $this->db->query("SELECT * FROM regis");
+    public function getAllDataMahasiswa() {
+        $stmt = $this->db->query("SELECT * FROM mahasiswa");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function create($nama, $telepon) {
-        $stmt = $this->db->prepare("INSERT INTO regis (nama, telepon) VALUES (?, ?)");
-        return $stmt->execute([$nama, $telepon]);
+    public function getUsernameRegistrasi() {
+        $stmt = $this->db->query("SELECT nama FROM regis");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function create($nama, $email, $kata_sandi) {
+        $stmt = $this->db->prepare("INSERT INTO mahasiswa (nama, email, kata_sandi) VALUES (?, ?, ?)");
+        return $stmt->execute([$nama, $email, $kata_sandi]);
     }
 
     public function delete($id) {
