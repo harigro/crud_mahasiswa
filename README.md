@@ -25,6 +25,8 @@ Aplikasi CRUD untuk mengelola data nomor telepon menggunakan Flight PHP sebagai 
 │   │   │   ├── 404.php
 │   │   │   ├── form.php
 │   │   │   ├── list.php
+│   │   ├── loyout.php
+│   │   ├── registrasi.php
 │   ├── config.php
 │   ├── Database.php
 ├── /vendor
