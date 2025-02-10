@@ -24,7 +24,17 @@ Flight::route('/', [MahasiswaController::class, 'index']);
 Flight::route('/register', [MahasiswaController::class, 'register']);
 Flight::route('POST /register/store', function() {
     $controller = new MahasiswaController();
-    $controller->store(fn() => Flight::redirect('/'));
+    $controller->storeRegistrasi(fn() => Flight::redirect('/'));
+});
+
+Flight::route('POST /data/mahasiswa/store', function() {
+    $controller = new MahasiswaController();
+    $controller->storeMahasiswa(fn() => Flight::redirect('/'));
+});
+
+Flight::route('POST /data/mahasiswa/delete', function() {
+    $controller = new MahasiswaController();
+    $controller->deleteStoreMahasiswa(fn() => Flight::redirect('/'));
 });
 
 // Mulai aplikasi

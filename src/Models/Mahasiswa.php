@@ -26,8 +26,13 @@ class Mahasiswa {
         return $stmt->execute([$nama, $email, $kata_sandi]);
     }
 
-    public function delete($id) {
-        $stmt = $this->db->prepare("DELETE FROM belanja WHERE id = ?");
+    public function createDataMahasiswa($nama, $nim, $jurusan, $email) {
+        $stmt = $this->db->prepare("INSERT INTO mahasiswa (nama_mahasiswa, nim, jurusan, email) VALUES (?, ?, ?, ?)");
+        return $stmt->execute([$nama, $nim, $jurusan, $email]);
+    }
+
+    public function deleteDataMahasiswa($id) {
+        $stmt = $this->db->prepare("DELETE FROM mahasiswa WHERE id = ?");
         return $stmt->execute([$id]);
     }
 }

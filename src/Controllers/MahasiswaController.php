@@ -22,7 +22,7 @@ class MahasiswaController {
         echo $this->templates->render('mahasiswa/form', []);
     }
 
-    public function store(callable $redirectTo): void {
+    public function storeRegistrasi(callable $redirectTo): void {
         if (Flight::request()->method === "POST") {
             $nama = trim($_POST['nama_lengkap'] ?? '');
             $email = trim($_POST['email'] ?? '');
@@ -39,11 +39,31 @@ class MahasiswaController {
             }
         }
     }
+
+    public function storeMahasiswa(callable $redirectTo): void {
+        if (Flight::request()->method === "POST") {
+            $nama = trim($_POST['nama'] ?? '');
+            $nim = trim($_POST['nim'] ?? '');
+            $jurusan = trim($_POST['jurusan'] ?? '');
+            $email = trim($_POST['email'] ?? '');
     
-    public function delete(string $id): void {
-        $this->mahasiswa->delete($id);
-        header("Location: index.php");
-        exit;
+            if ($nama === '' || $nim === '' || $jurusan === '' || $email === '') {
+                echo $this->templates->render('mahasiswa/404');
+            } else {
+                $this->mahasiswa->createDataMahasiswa($nama, $nim, $jurusan, $email);
+            $redirectTo();
+            exit;
+            }
+        }
+    }
+
+    public function deleteStoreMahasiswa(callable $redirectTo): void {
+        if (Flight::request()->method === "POST") {
+            $id = $_POST['id'];
+            $this->mahasiswa->deleteDataMahasiswa($id);
+            $redirectTo();
+            exit;
+        }
     }
     
 }
