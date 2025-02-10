@@ -65,5 +65,23 @@ class MahasiswaController {
             exit;
         }
     }
+
+    public function updateStoreMahasiswa(callable $redirectTo): void {
+        if (Flight::request()->method === "POST") {
+            $id = trim($_POST['id'] ?? '');
+            $nama = trim($_POST['nama'] ?? '');
+            $nim = trim($_POST['nim'] ?? '');
+            $jurusan = trim($_POST['jurusan'] ?? '');
+            $email = trim($_POST['email'] ?? '');
+    
+            if ($id === '' || $nama === '' || $nim === '' || $jurusan === '' || $email === '') {
+                echo $this->templates->render('mahasiswa/404');
+            } else {
+                $this->mahasiswa->updateDataMahasiswa($id, $nama, $nim, $jurusan, $email);
+            $redirectTo();
+            exit;
+            }
+        }
+    }
     
 }

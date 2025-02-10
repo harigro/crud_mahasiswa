@@ -27,14 +27,22 @@ Flight::route('POST /register/store', function() {
     $controller->storeRegistrasi(fn() => Flight::redirect('/'));
 });
 
+// menyimpan hasil registrasi
 Flight::route('POST /data/mahasiswa/store', function() {
     $controller = new MahasiswaController();
     $controller->storeMahasiswa(fn() => Flight::redirect('/'));
 });
 
+// menghapus data mahasiswa
 Flight::route('POST /data/mahasiswa/delete', function() {
     $controller = new MahasiswaController();
     $controller->deleteStoreMahasiswa(fn() => Flight::redirect('/'));
+});
+
+// memperbahrui data mahasiswa
+Flight::route('POST /data/mahasiswa/update', function() {
+    $controller = new MahasiswaController();
+    $controller->updateStoreMahasiswa(fn() => Flight::redirect('/'));
 });
 
 // Mulai aplikasi

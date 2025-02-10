@@ -35,4 +35,9 @@ class Mahasiswa {
         $stmt = $this->db->prepare("DELETE FROM mahasiswa WHERE id = ?");
         return $stmt->execute([$id]);
     }
+
+    public function updateDataMahasiswa($id, $nama, $nim, $jurusan, $email) {
+        $stmt = $this->db->prepare("UPDATE mahasiswa SET nama_mahasiswa = ?, nim = ?, jurusan = ?, email = ? WHERE id = ?");
+        return $stmt->execute([$nama, $nim, $jurusan, $email, $id]);
+    }
 }
