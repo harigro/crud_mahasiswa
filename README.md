@@ -16,11 +16,14 @@ Aplikasi CRUD untuk mengelola data nomor telepon menggunakan Flight PHP sebagai 
 │   │   │   ├── bootstrap.bundle.min.js
 ├── /src
 │   ├── /Controllers
-│   │   ├── TelephoneController.php
+│   │   ├── MahasiswaController.php
 │   ├── /Models
-│   │   ├── Telephone.php
+│   │   ├── Mahasiswa.php
 │   ├── /Views
-│   │   ├── telephone
+│   │   ├── mahasiswa
+│   │   │   ├── /modal
+│   │   │   │   ├── bahrui_data.php
+│   │   │   │   ├── tambah_data.php
 │   │   │   ├── index.php
 │   │   │   ├── 404.php
 │   │   │   ├── form.php
