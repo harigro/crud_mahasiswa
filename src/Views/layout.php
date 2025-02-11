@@ -15,6 +15,6 @@ $base_url = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . dirname
         <?= $this->section('content') ?>
     </div>
     <script src="<?= $base_url ?>assets/js/bootstrap.bundle.min.js"></script>
-    <script src="<?= $base_url ?>assets/js/script_modal_bahrui.js"></script>
+    <script src="<?= $base_url ?>assets/js/script_modal_bahrui.min.js"></script>
 </body>
 </html>

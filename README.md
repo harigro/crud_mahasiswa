@@ -14,6 +14,8 @@ Aplikasi CRUD untuk mengelola data nomor telepon menggunakan Flight PHP sebagai 
 │   │   │   ├── bootstrap.min.css
 │   │   ├── /js
 │   │   │   ├── bootstrap.bundle.min.js
+│   │   │   ├── script_form.min.js
+│   │   │   ├── script_modal_bahrui.min.js
 ├── /src
 │   ├── /Controllers
 │   │   ├── MahasiswaController.php

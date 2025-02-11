@@ -11,6 +11,6 @@
         <?= $this->section('content') ?>
     </div>
     <script src="./assets/js/bootstrap.bundle.min.js"></script>
-    <script src="./assets/js/script_form.js"></script>
+    <script src="./assets/js/script_form.min.js"></script>
 </body>
 </html>
