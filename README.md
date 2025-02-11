@@ -1,6 +1,6 @@
-# CRUD Aplikasi Nomor Telepon dengan Flight PHP & Plates
+# CRUD Aplikasi Pendata Mahasiswa dengan Flight PHP & Plates
 
-Aplikasi CRUD untuk mengelola data nomor telepon menggunakan Flight PHP sebagai framework backend dan Plates sebagai template engine. Aplikasi ini menggunakan arsitektur Model-View-Controller (MVC) dan Bootstrap 5.3.3 untuk tampilan frontend.
+Aplikasi CRUD untuk mengelola data data mahasiswa menggunakan Flight PHP sebagai framework backend dan Plates sebagai template engine. Aplikasi ini menggunakan arsitektur Model-View-Controller (MVC) dan Bootstrap 5.3.3 untuk tampilan frontend.
 
 ## Struktur Direktori
 
@@ -40,10 +40,10 @@ Aplikasi CRUD untuk mengelola data nomor telepon menggunakan Flight PHP sebagai 
 
 ## Fitur
 
-1. **Tambah Nomor Telepon** - Menambahkan nomor telepon baru ke dalam database.
-2. **Tampilkan Nomor Telepon** - Menampilkan daftar nomor telepon yang telah tersimpan.
-3. **Update Nomor Telepon** - Mengubah data nomor telepon yang ada.
-4. **Hapus Nomor Telepon** - Menghapus nomor telepon dari daftar.
+1. **Tambah Data Mahasiswa** - Menambahkan data mahasiswa baru ke dalam database.
+2. **Tampilkan Data Mahasiswa** - Menampilkan daftar data mahasiswa yang telah tersimpan.
+3. **Update Data Mahasiswa** - Mengubah data data mahasiswa yang ada.
+4. **Hapus Data Mahasiswa** - Menghapus data mahasiswa dari daftar.
 5. **Registasi Pengguna** - Pengguna diharuskan untuk melakukan registrasi untuk bisa menggunakan aplikasi.
 6. **Menggunakan Jalur Dinamis** - Aplikasi ini menggunakan `jalur dinamis` yang dibuat oleh `bahasa PHP` untuk mempermudah menemukan jalur folder css dan js serta bisa digunakan baik secara luring maupun daring.
 
@@ -51,20 +51,20 @@ Aplikasi CRUD untuk mengelola data nomor telepon menggunakan Flight PHP sebagai 
 
 - PHP 8.2 atau yang lebih baru.
 - Composer untuk mengelola dependensi.
-- Database (misalnya MySQL atau SQLite) untuk menyimpan data nomor telepon.
+- Database (misalnya MySQL atau SQLite) untuk menyimpan data data mahasiswa.
 
 ## Instalasi
 
 1. Clone repositori ini ke direktori lokal:
    
    ```bash
-   git clone https://github.com/harigro/crud_telephone_number.git
+   git clone https://github.com/harigro/crud_mahasiswa.git
    ```
 
 2. Masuk ke direktori proyek:
    
    ```bash
-   cd crud_telephone_number
+   cd crud_mahasiswa
    ```
 
 3. Jalankan Composer untuk menginstal dependensi:
@@ -106,7 +106,7 @@ Untuk mengarahkan semua permintaan ke `public/index.php`, buat file `.htaccess` 
 
 ## Pengarahan ke 404
 
-Jika ada inputan yang kosong atau tidak valid, aplikasi akan mengarahkan pengguna ke halaman 404. Anda bisa mengonfigurasi pengecekan input di controller dan memastikan aplikasi mengarah ke `views/belanja/404.php` jika ada kesalahan.
+Jika ada inputan yang kosong atau tidak valid, aplikasi akan mengarahkan pengguna ke halaman 404. Anda bisa mengonfigurasi pengecekan input di controller dan memastikan aplikasi mengarah ke `Views/mahasiswa/404.php` jika ada kesalahan.
 
 ## Lisensi
 
