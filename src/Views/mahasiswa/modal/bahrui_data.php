@@ -17,7 +17,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">NIM</label>
-                        <input type="number" name="nim" class="form-control">
+                        <input type="text" name="nim" class="form-control">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Jurusan</label>
