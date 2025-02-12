@@ -57,7 +57,7 @@ class MahasiswaController {
         }
     }
 
-    public function deleteStoreMahasiswa(callable $redirectTo): void {
+    public function deleteMahasiswa(callable $redirectTo): void {
         if (Flight::request()->method === "POST") {
             $id = $_POST['id'];
             $this->mahasiswa->deleteDataMahasiswa($id);
@@ -66,7 +66,7 @@ class MahasiswaController {
         }
     }
 
-    public function updateStoreMahasiswa(callable $redirectTo): void {
+    public function updateMahasiswa(callable $redirectTo): void {
         if (Flight::request()->method === "POST") {
             $id = trim($_POST['id'] ?? '');
             $nama = trim($_POST['nama'] ?? '');
