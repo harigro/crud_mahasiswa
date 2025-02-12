@@ -14,7 +14,7 @@
                 <th>ID</th>
                 <th>Nama Lengkap</th>
                 <th>NIM</th>
-                <th>Juruasn</th>
+                <th>Jurusan</th>
                 <th>Email</th>
                 <th>Dibuat Tanggal</th>
                 <th>Aksi</th>
@@ -24,23 +24,23 @@
             <?php foreach ($items as $item): ?>
                 <tr>
                     <td><?= $item['id'] ?></td>
-                    <td><?= $item['nama_mahasiswa'] ?></td>
-                    <td><?= $item['nim'] ?></td>
-                    <td><?= $item['jurusan'] ?></td>
-                    <td><?= $item['email'] ?></td>
+                    <td><?= $this->escape($item['nama_mahasiswa']) ?></td>
+                    <td><?= $this->escape($item['nim']) ?></td>
+                    <td><?= $this->escape($item['jurusan']) ?></td>
+                    <td><?= $this->escape($item['email']) ?></td>
                     <td><?= $item['created_at'] ?></td>
                     <td>
                         <div class="d-flex gap-2">
                             <div class="me-2">
-                                <input style="display:none;" class="data-id" value="<?= $item['id'] ?>">
-                                <input style="display:none;" class="data-nama" value="<?= $item['nama_mahasiswa'] ?>">
-                                <input style="display:none;" class="data-nim" value="<?= $item['nim'] ?>">
-                                <input style="display:none;" class="data-jurusan" value="<?= $item['jurusan'] ?>">
-                                <input style="display:none;" class="data-email" value="<?= $item['email'] ?>">
-                                <button type="submit" class="btn btn-secondary bahrui-data" 
-                                data-bs-toggle="modal" data-bs-target="#modalBahrui">Bahrui</button>
+                                <input style="display:none;" class="data-id" value="<?= $this->escape($item['id']) ?>">
+                                <input style="display:none;" class="data-nama" value="<?= $this->escape($item['nama_mahasiswa']) ?>">
+                                <input style="display:none;" class="data-nim" value="<?= $this->escape($item['nim']) ?>">
+                                <input style="display:none;" class="data-jurusan" value="<?= $this->escape($item['jurusan']) ?>">
+                                <input style="display:none;" class="data-email" value="<?= $this->escape($item['email']) ?>">
+                                <button type="submit" class="btn btn-secondary bahrui-data"
+                                    data-bs-toggle="modal" data-bs-target="#modalBahrui">Edit Data</button>
                             </div>
-                            <form class="ms-2 method="POST" action="./data/mahasiswa/delete">
+                            <form class="ms-2" method="POST" action="./data/mahasiswa/delete">
                                 <input type="hidden" name="id" value="<?= $item['id'] ?>">
                                 <button type="submit" class="btn btn-danger">Hapus</button>
                             </form>

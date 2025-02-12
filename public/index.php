@@ -5,45 +5,52 @@ require '../vendor/autoload.php';
 use League\Plates\Engine as PlatesEngine;
 use Apps\Controllers\MahasiswaController;
 
-session_start();
-// Tambahkan Plates ke Flight
-Flight::set('plates', [PlatesEngine::class, __DIR__ . '/../src/views']);
+// Setup Template Engine (Plates)
+Flight::set('plates', (function () {
+    $plates = new PlatesEngine(__DIR__ . '/../src/Views');
+    $plates->addData([
+        'escape' => fn($string) => htmlspecialchars($string, ENT_QUOTES, 'UTF-8')
+    ]);
+    return $plates;
+})());
 
-// Middleware untuk pengecekan sesi
+// Middleware untuk Cek Sesi
 Flight::before('start', function() {
-    $allowedRoutes = ['/register', '/register/store']; // Halaman yang boleh diakses tanpa login
-    if (!isset($_SESSION['username']) && !in_array(Flight::request()->url, $allowedRoutes)) {
-        Flight::redirect('/register'); // Jika belum login, arahkan ke halaman register
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    if (!isset($_SESSION['username']) && !in_array(Flight::request()->url, ['/register', '/register/store'])) {
+        Flight::redirect('/register');
         exit;
     }
 });
 
+// Set Controller
+Flight::set('mahasiswaController', new MahasiswaController());
 
-// Route utama
+// Routing
 Flight::route('/', [MahasiswaController::class, 'index']);
 Flight::route('/register', [MahasiswaController::class, 'register']);
+
+// Menyimpan hasil registrasi
 Flight::route('POST /register/store', function() {
-    $controller = new MahasiswaController();
-    $controller->storeRegistrasi(fn() => Flight::redirect('/'));
+    Flight::get('mahasiswaController')->storeRegistrasi(fn() => Flight::redirect('/'));
 });
 
-// menyimpan hasil registrasi
+// Menyimpan data mahasiswa
 Flight::route('POST /data/mahasiswa/store', function() {
-    $controller = new MahasiswaController();
-    $controller->storeMahasiswa(fn() => Flight::redirect('/'));
+    Flight::get('mahasiswaController')->storeMahasiswa(fn() => Flight::redirect('/'));
 });
 
-// menghapus data mahasiswa
+// Menghapus data mahasiswa
 Flight::route('POST /data/mahasiswa/delete', function() {
-    $controller = new MahasiswaController();
-    $controller->deleteStoreMahasiswa(fn() => Flight::redirect('/'));
+    Flight::get('mahasiswaController')->deleteMahasiswa(fn() => Flight::redirect('/'));
 });
 
-// memperbahrui data mahasiswa
+// Memperbarui data mahasiswa
 Flight::route('POST /data/mahasiswa/update', function() {
-    $controller = new MahasiswaController();
-    $controller->updateStoreMahasiswa(fn() => Flight::redirect('/'));
+    Flight::get('mahasiswaController')->updateMahasiswa(fn() => Flight::redirect('/'));
 });
 
-// Mulai aplikasi
+// Mulai Aplikasi
 Flight::start();
