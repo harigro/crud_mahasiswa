@@ -9,7 +9,7 @@
                 <form method="POST" action="./data/mahasiswa/update">
                     <div class="mb-3">
                         <label class="form-label">ID</label>
-                        <input type="text" name="id" class="form-control">
+                        <input type="text" name="id" class="form-control" readonly>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Nama</label>
