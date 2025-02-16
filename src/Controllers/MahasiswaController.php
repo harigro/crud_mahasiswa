@@ -57,8 +57,8 @@ class MahasiswaController {
     }
 
     // menyimpana data mahasiswa
-    public function storeMahasiswa(callable $redirectTo): void {
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    public function storeMahasiswa(callable $redirectTo, mixed $request): void {
+        if ($request->method === "POST") {
             $nama = trim($_POST['nama'] ?? '');
             $nim = trim($_POST['nim'] ?? '');
             $jurusan = trim($_POST['jurusan'] ?? '');
@@ -75,8 +75,8 @@ class MahasiswaController {
     }    
 
     // menyimpana menghapus data mahasiswa
-    public function deleteMahasiswa(callable $redirectTo): void {
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    public function deleteMahasiswa(callable $redirectTo, mixed $request): void {
+        if ($request->method === "POST") {
             $id = $_POST['id'];
             $this->mahasiswa->deleteDataMahasiswa($id);
             $redirectTo();
@@ -85,8 +85,8 @@ class MahasiswaController {
     }
 
     // menyimpana mengedit data mahasiswa
-    public function updateMahasiswa(callable $redirectTo): void {
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    public function updateMahasiswa(callable $redirectTo, mixed $request): void {
+        if ($request->method === "POST") {
             $id = trim($_POST['id'] ?? '');
             $nama = trim($_POST['nama'] ?? '');
             $nim = trim($_POST['nim'] ?? '');
@@ -104,8 +104,8 @@ class MahasiswaController {
     }
 
     // mencari data mahasiswa
-    public function searchMahasiswa(callable $redirectTo): void {
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    public function searchMahasiswa(callable $redirectTo, mixed $request): void {
+        if ($request->method === "POST") {
             $nim = trim($_POST['nim'] ?? '');
 
             if ($nim === '') {

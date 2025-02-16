@@ -45,22 +45,22 @@ Flight::route('POST /register/store', function() {
 
 // Menyimpan data mahasiswa
 Flight::route('POST /data/mahasiswa/store', function() {
-    Flight::get('mahasiswaController')->storeMahasiswa(fn() => Flight::redirect('/'));
+    Flight::get('mahasiswaController')->storeMahasiswa(fn() => Flight::redirect('/'), Flight::request());
 });
 
 // Menghapus data mahasiswa
 Flight::route('POST /data/mahasiswa/delete', function() {
-    Flight::get('mahasiswaController')->deleteMahasiswa(fn() => Flight::redirect('/'));
+    Flight::get('mahasiswaController')->deleteMahasiswa(fn() => Flight::redirect('/'), Flight::request());
 });
 
 // Memperbarui data mahasiswa
 Flight::route('POST /data/mahasiswa/update', function() {
-    Flight::get('mahasiswaController')->updateMahasiswa(fn() => Flight::redirect('/'));
+    Flight::get('mahasiswaController')->updateMahasiswa(fn() => Flight::redirect('/'), Flight::request());
 });
 
 // Memperbarui data mahasiswa
 Flight::route('POST /data/mahasiswa/cari', function() {
-    Flight::get('mahasiswaController')->searchMahasiswa(fn() => Flight::redirect('/'));
+    Flight::get('mahasiswaController')->searchMahasiswa(fn() => Flight::redirect('/'), Flight::request());
 });
 
 // keluar aplikasi
