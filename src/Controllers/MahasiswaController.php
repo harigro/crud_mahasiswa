@@ -14,14 +14,17 @@ class MahasiswaController {
         $this->templates = new Engine(__DIR__ . '/../Views');
     }
 
-    public function index() {
+    // halaman utama
+    public function index(): void {
         echo $this->templates->render('mahasiswa/index', ['items' => $this->mahasiswa->getAllDataMahasiswa()]);
     }
 
+    // halaman registrasi
     public function register() {
         echo $this->templates->render('mahasiswa/form', []);
     }
 
+    // simpan data registrasi
     public function storeRegistrasi(callable $redirectTo): void {
         if (Flight::request()->method === "POST") {
             $nama = trim($_POST['nama_lengkap'] ?? '');
@@ -40,6 +43,7 @@ class MahasiswaController {
         }
     }
 
+    // simpan data mahasiswa
     public function storeMahasiswa(callable $redirectTo): void {
         if (Flight::request()->method === "POST") {
             $nama = trim($_POST['nama'] ?? '');
@@ -57,6 +61,7 @@ class MahasiswaController {
         }
     }
 
+    // hapus data mahasiswa
     public function deleteMahasiswa(callable $redirectTo): void {
         if (Flight::request()->method === "POST") {
             $id = $_POST['id'];
@@ -66,6 +71,7 @@ class MahasiswaController {
         }
     }
 
+    // edit data mahasiswa
     public function updateMahasiswa(callable $redirectTo): void {
         if (Flight::request()->method === "POST") {
             $id = trim($_POST['id'] ?? '');
@@ -81,6 +87,15 @@ class MahasiswaController {
             $redirectTo();
             exit;
             }
+        }
+    }
+
+    // keluar dari sesi
+    public function keluarSesi(callable $redirectTo): void {
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            session_destroy();
+            $redirectTo();
+            exit;
         }
     }
     

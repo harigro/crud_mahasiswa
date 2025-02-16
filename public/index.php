@@ -52,5 +52,10 @@ Flight::route('POST /data/mahasiswa/update', function() {
     Flight::get('mahasiswaController')->updateMahasiswa(fn() => Flight::redirect('/'));
 });
 
+// keluar aplikasi
+Flight::route('/logout', function() {
+    Flight::get('mahasiswaController')->keluarSesi(fn() => Flight::redirect('/register'));
+});
+
 // Mulai Aplikasi
 Flight::start();
