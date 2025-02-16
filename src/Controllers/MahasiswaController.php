@@ -47,7 +47,7 @@ class MahasiswaController {
                 if ($nama === '' || $email === '' || $kata_sandi === '' || $k_kata_sandi === '') {
                     echo $this->templates->render('mahasiswa/berita/404');
                 } else {
-                    $this->mahasiswa->createRegistarsi($nama, $email, $kata_sandi);
+                    $this->mahasiswa->createRegistrasi($nama, $email, $kata_sandi);
                     $_SESSION['username'] = $nama;
                     $redirectTo();
                     exit;
