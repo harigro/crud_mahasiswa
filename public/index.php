@@ -60,7 +60,7 @@ Flight::route('POST /data/mahasiswa/update', function() {
 
 // Memperbarui data mahasiswa
 Flight::route('POST /data/mahasiswa/cari', function() {
-    Flight::get('mahasiswaController')->searchMahasiswa(fn() => Flight::redirect('/'), Flight::request());
+    Flight::get('mahasiswaController')->searchMahasiswa(Flight::request());
 });
 
 // keluar aplikasi

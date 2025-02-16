@@ -26,11 +26,13 @@ class MahasiswaController {
     // halaman utama
     public function index() {
         echo $this->templates->render('mahasiswa/index', ['items' => $this->mahasiswa->getAllDataMahasiswa()]);
+        exit;
     }
 
     // halaman registrasi
     public function register() {
         echo $this->templates->render('mahasiswa/form', []);
+        exit;
     }
 
     // menyimpana data registrasi
@@ -104,16 +106,18 @@ class MahasiswaController {
     }
 
     // mencari data mahasiswa
-    public function searchMahasiswa(callable $redirectTo, mixed $request): void {
+    public function searchMahasiswa(mixed $request): void {
         if ($request->method === "POST") {
             $nim = trim($_POST['nim'] ?? '');
 
             if ($nim === '') {
                 echo $this->templates->render('mahasiswa/berita/404');
-            // } else {
-            //     $this->mahasiswa->updateDataMahasiswa($id, $nama, $nim, $jurusan, $email);
-            // $redirectTo();
-            // exit;
+            } elseif ($this->mahasiswa->SearchDataMahasiswa($nim) === false) {
+                echo $this->templates->render('mahasiswa/berita/403');
+            } else {
+                echo $this->templates->render(
+                    'mahasiswa/temukan/databaru', ['barusaja' => $this->mahasiswa->SearchDataMahasiswa($nim)]);               
+                exit;
             }
         }
     }

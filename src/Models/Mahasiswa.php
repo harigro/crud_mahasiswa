@@ -73,4 +73,17 @@ class Mahasiswa {
             $this->db->rollBack();
         }
     }
+
+    public function SearchDataMahasiswa($nim) {
+        try {
+            $stmt = $this->db->prepare("SELECT * FROM mahasiswa WHERE nim = :nim");
+            $stmt->bindParam(':nim', $nim, PDO::PARAM_STR);
+            $stmt->execute();
+    
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+        
 }
