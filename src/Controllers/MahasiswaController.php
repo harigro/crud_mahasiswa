@@ -112,12 +112,17 @@ class MahasiswaController {
 
             if ($nim === '') {
                 echo $this->templates->render('mahasiswa/berita/404');
-            } elseif ($this->mahasiswa->SearchDataMahasiswa($nim) === false) {
-                echo $this->templates->render('mahasiswa/berita/403');
             } else {
-                echo $this->templates->render(
-                    'mahasiswa/temukan/databaru', ['barusaja' => $this->mahasiswa->SearchDataMahasiswa($nim)]);               
-                exit;
+                $data_baru = $this->mahasiswa->SearchDataMahasiswa($nim);
+                if ($data_baru === false || empty($data_baru)) {
+                    echo $this->templates->render('mahasiswa/berita/403');
+                } else {
+                    echo $this->templates->render(
+                        'mahasiswa/temukan/databaru',
+                        ['barusaja' => $data_baru]
+                    );
+                    exit;
+                }
             }
         }
     }
