@@ -16,9 +16,15 @@ Flight::set('plates', (function () {
 
 // Middleware untuk Cek Sesi
 Flight::before('start', function() {
+    // Mengaktifkan sesi
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
+    // Mengaktifkan token CSRF
+    if (!isset($_SESSION['csrf_tokens'])) {
+        $_SESSION['csrf_tokens'] = bin2hex(random_bytes(32));
+    }
+    // Mengaktifkan formulir registrasi
     if (!isset($_SESSION['username']) && !in_array(Flight::request()->url, ['/register', '/register/store'])) {
         Flight::redirect('/register');
         exit;
@@ -50,6 +56,11 @@ Flight::route('POST /data/mahasiswa/delete', function() {
 // Memperbarui data mahasiswa
 Flight::route('POST /data/mahasiswa/update', function() {
     Flight::get('mahasiswaController')->updateMahasiswa(fn() => Flight::redirect('/'));
+});
+
+// Memperbarui data mahasiswa
+Flight::route('POST /data/mahasiswa/cari', function() {
+    Flight::get('mahasiswaController')->searchMahasiswa(fn() => Flight::redirect('/'));
 });
 
 // keluar aplikasi
