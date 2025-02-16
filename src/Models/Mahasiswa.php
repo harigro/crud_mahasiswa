@@ -3,6 +3,7 @@ namespace Apps\Models;
 
 use Apps\Database;
 use PDO;
+use PDOException;
 
 class Mahasiswa {
     private $db;
@@ -21,23 +22,55 @@ class Mahasiswa {
         return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
 
-    public function createRegistarsi($nama, $email, $kata_sandi) {
-        $stmt = $this->db->prepare("INSERT INTO registrasi (nama, email, kata_sandi) VALUES (?, ?, ?)");
-        return $stmt->execute([$nama, $email, $kata_sandi]);
+    public function createRegistrasi($nama, $email, $kata_sandi) {
+        try {
+            $this->db->beginTransaction();
+
+            $stmt = $this->db->prepare("INSERT INTO registrasi (nama, email, kata_sandi) VALUES (?, ?, ?)");
+            $stmt->execute([$nama, $email, $kata_sandi]);
+
+            $this->db->commit();
+        } catch (PDOException $e) {
+            $this->db->rollBack();
+        }
     }
 
     public function createDataMahasiswa($nama, $nim, $jurusan, $email) {
-        $stmt = $this->db->prepare("INSERT INTO mahasiswa (nama_mahasiswa, nim, jurusan, email) VALUES (?, ?, ?, ?)");
-        return $stmt->execute([$nama, $nim, $jurusan, $email]);
+        try {
+            $this->db->beginTransaction();
+
+            $stmt = $this->db->prepare("INSERT INTO mahasiswa (nama_mahasiswa, nim, jurusan, email) VALUES (?, ?, ?, ?)");
+            $stmt->execute([$nama, $nim, $jurusan, $email]);
+
+            $this->db->commit();
+        } catch (PDOException $e) {
+            $this->db->rollBack();
+        }
     }
 
     public function deleteDataMahasiswa($id) {
-        $stmt = $this->db->prepare("DELETE FROM mahasiswa WHERE id = ?");
-        return $stmt->execute([$id]);
+        try {
+            $this->db->beginTransaction();
+
+            $stmt = $this->db->prepare("DELETE FROM mahasiswa WHERE id = ?");
+            $stmt->execute([$id]);
+
+            $this->db->commit();
+        } catch (PDOException $e) {
+            $this->db->rollBack();
+        }
     }
 
     public function updateDataMahasiswa($id, $nama, $nim, $jurusan, $email) {
-        $stmt = $this->db->prepare("UPDATE mahasiswa SET nama_mahasiswa = ?, nim = ?, jurusan = ?, email = ? WHERE id = ?");
-        return $stmt->execute([$nama, $nim, $jurusan, $email, $id]);
+        try {
+            $this->db->beginTransaction();
+
+            $stmt = $this->db->prepare("UPDATE mahasiswa SET nama_mahasiswa = ?, nim = ?, jurusan = ?, email = ? WHERE id = ?");
+            $stmt->execute([$nama, $nim, $jurusan, $email, $id]);
+
+            $this->db->commit();
+        } catch (PDOException $e) {
+            $this->db->rollBack();
+        }
     }
 }
