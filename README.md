@@ -23,11 +23,14 @@ Aplikasi CRUD untuk mengelola data data mahasiswa menggunakan Flight PHP sebagai
 │   │   ├── Mahasiswa.php
 │   ├── /Views
 │   │   ├── mahasiswa
+│   │   │   ├── /berita
+│   │   │   │   ├── 403.php
+│   │   │   │   ├── 404.php
 │   │   │   ├── /modal
 │   │   │   │   ├── bahrui_data.php
+│   │   │   │   ├── cari_data.php
 │   │   │   │   ├── tambah_data.php
 │   │   │   ├── index.php
-│   │   │   ├── 404.php
 │   │   │   ├── form.php
 │   │   │   ├── list.php
 │   │   ├── loyout.php
@@ -42,10 +45,12 @@ Aplikasi CRUD untuk mengelola data data mahasiswa menggunakan Flight PHP sebagai
 
 1. **Tambah Data Mahasiswa** - Menambahkan data mahasiswa baru ke dalam database.
 2. **Tampilkan Data Mahasiswa** - Menampilkan daftar data mahasiswa yang telah tersimpan.
-3. **Update Data Mahasiswa** - Mengubah data data mahasiswa yang ada.
+3. **Edit Data Mahasiswa** - Mengubah data data mahasiswa yang ada.
 4. **Hapus Data Mahasiswa** - Menghapus data mahasiswa dari daftar.
-5. **Registasi Pengguna** - Pengguna diharuskan untuk melakukan registrasi untuk bisa menggunakan aplikasi.
-6. **Menggunakan Jalur Dinamis** - Aplikasi ini menggunakan `jalur dinamis` yang dibuat oleh `bahasa PHP` untuk mempermudah menemukan jalur folder css dan js serta bisa digunakan baik secara luring maupun daring.
+5. **Cari Data Mahasiswa** - Pencarian data mahasiswa dari daftar.
+6. **Registasi Pengguna** - Pengguna diharuskan untuk melakukan registrasi untuk bisa menggunakan aplikasi.
+7. **Pemberitahuan Pengguna** - Mengarahkan pengguna ke halaman tertentu jika data tidak ditemukan atau terjadi kesalahan sistem.
+8. **Menggunakan Jalur Dinamis** - Aplikasi ini menggunakan `jalur dinamis` yang dibuat oleh `bahasa PHP` untuk mempermudah menemukan jalur folder css dan js serta bisa digunakan baik secara luring maupun daring.
 
 ## Persyaratan
 
