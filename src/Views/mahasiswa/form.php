@@ -1,7 +1,7 @@
 <?php $this->layout('registrasi') ?>
 <body>
-    <div class="container mt-5">
-        <h2 class="mb-4">Form Registrasi</h2>
+    <div class="container mt-5 border rounded-2 p-4 w-50">
+        <h2 class="mb-4">Registrasi</h2>
         <form method="POST" action="./register/store" class="needs-validation" novalidate>
             <div class="mb-3">
                 <label for="nama" class="form-label">Nama Lengkap</label>
@@ -23,7 +23,7 @@
                 <input type="password" class="form-control" id="konfirmasiPassword" name="konfirmasi_password" required>
                 <div class="invalid-feedback">Konfirmasi kata sandi harus sama.</div>
             </div>
-            <button type="submit" class="btn btn-primary">Daftar</button>
+            <button type="submit" class="btn btn-primary w-25 my-3">Daftar</button>
         </form>
     </div>
 </body>
