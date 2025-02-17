@@ -1,4 +1,4 @@
-# CRUD Aplikasi Pendata Mahasiswa dengan Flight PHP & Plates
+# CRUD Aplikasi Pendataan Mahasiswa dengan Flight PHP & Plates
 
 Aplikasi CRUD untuk mengelola data data mahasiswa menggunakan Flight PHP sebagai framework backend dan Plates sebagai template engine. Aplikasi ini menggunakan arsitektur Model-View-Controller (MVC) dan Bootstrap 5.3.3 untuk tampilan frontend.
 
