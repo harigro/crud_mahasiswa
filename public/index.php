@@ -24,10 +24,13 @@ Flight::before('start', function() {
     if (!isset($_SESSION['csrf_tokens'])) {
         $_SESSION['csrf_tokens'] = bin2hex(random_bytes(32));
     }
+    // Jika ada cookie "data", simpan ke dalam sesi
+    if (isset($_COOKIE['data']) && !isset($_SESSION['username'])) {
+        $_SESSION['username'] = $_COOKIE['data'];
+    }
     // Mengaktifkan formulir registrasi
     if (!isset($_SESSION['username']) && !in_array(Flight::request()->url, ['/register', '/register/store'])) {
         Flight::redirect('/register');
-        exit;
     }
 });
 

@@ -26,37 +26,53 @@ class MahasiswaController {
     // halaman utama
     public function index() {
         echo $this->templates->render('mahasiswa/index', ['items' => $this->mahasiswa->getAllDataMahasiswa()]);
-        exit;
     }
 
     // halaman registrasi
     public function register() {
         echo $this->templates->render('mahasiswa/form', []);
-        exit;
     }
 
     // menyimpana data registrasi
     public function storeRegistrasi(callable $redirectTo): void {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            // Validasi CSRF Token
             if (!isset($_POST["csrf_token"]) || !$this->validateCsrfToken($_POST["csrf_token"])) {
                 die("CSRF token tidak valid");
             } else {
+                // Ambil data dan sanitasi input
                 $nama = trim($_POST['nama_lengkap'] ?? '');
                 $email = trim($_POST['email'] ?? '');
                 $kata_sandi = trim($_POST['password'] ?? '');
                 $k_kata_sandi = trim($_POST['konfirmasi_password'] ?? '');
-
+                // Validasi jika ada data yang kosong
                 if ($nama === '' || $email === '' || $kata_sandi === '' || $k_kata_sandi === '') {
                     echo $this->templates->render('mahasiswa/berita/404');
-                } else {
-                    $this->mahasiswa->createRegistrasi($nama, $email, $kata_sandi);
-                    $_SESSION['username'] = $nama;
-                    $redirectTo();
-                    exit;
-                } 
+                }
+                // Validasi password dan konfirmasi password
+                if ($kata_sandi !== $k_kata_sandi) {
+                    echo $this->templates->render('mahasiswa/berita/404');
+                }
+                // Validasi format email
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    echo $this->templates->render('mahasiswa/berita/404');
+                }
+                // Menyimpan data ke dalam cookie dengan pengamanan
+                setcookie('data', htmlspecialchars($nama, ENT_QUOTES, 'UTF-8'), [
+                    'expires' => time() + 160, // 1 jam
+                    'path' => '/',
+                    'secure' => false, // Gunakan HTTPS jika tersedia
+                    'httponly' => true, // Hindari akses cookie dari JavaScript
+                    'samesite' => 'Strict' // Atur samesite untuk menghindari CSRF
+                ]);
+                // Menyimpan data pengguna di database
+                $this->mahasiswa->createRegistrasi($nama, $email, $kata_sandi); 
+                // Mengarahkan ke halaman yang dituju setelah registrasi
+                $redirectTo();
             }
         }
     }
+    
 
     // menyimpana data mahasiswa
     public function storeMahasiswa(callable $redirectTo, mixed $request): void {
@@ -71,7 +87,6 @@ class MahasiswaController {
             } else {
                 $this->mahasiswa->createDataMahasiswa($nama, $nim, $jurusan, $email);
                 $redirectTo();
-                exit;
             }
         }
     }    
@@ -82,7 +97,6 @@ class MahasiswaController {
             $id = $_POST['id'];
             $this->mahasiswa->deleteDataMahasiswa($id);
             $redirectTo();
-            exit;
         }
     }
 
@@ -100,7 +114,6 @@ class MahasiswaController {
             } else {
                 $this->mahasiswa->updateDataMahasiswa($id, $nama, $nim, $jurusan, $email);
             $redirectTo();
-            exit;
             }
         }
     }
@@ -121,7 +134,6 @@ class MahasiswaController {
                         'mahasiswa/temukan/databaru',
                         ['barusaja' => $data_baru]
                     );
-                    exit;
                 }
             }
         }
@@ -132,7 +144,6 @@ class MahasiswaController {
         if (session_status() === PHP_SESSION_ACTIVE) {
             session_destroy();
             $redirectTo();
-            exit;
         }
     }
     
