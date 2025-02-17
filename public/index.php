@@ -6,13 +6,7 @@ use League\Plates\Engine as PlatesEngine;
 use Apps\Controllers\MahasiswaController;
 
 // Setup Template Engine (Plates)
-Flight::set('plates', (function () {
-    $plates = new PlatesEngine(__DIR__ . '/../src/Views');
-    $plates->addData([
-        'escape' => fn($string) => htmlspecialchars($string, ENT_QUOTES, 'UTF-8')
-    ]);
-    return $plates;
-})());
+Flight::set('plates', [PlatesEngine::class, __DIR__ . '/../src/views']);
 
 // Middleware untuk Cek Sesi
 Flight::before('start', function() {
