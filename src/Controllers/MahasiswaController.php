@@ -107,8 +107,8 @@ class MahasiswaController {
 
     // mencari data mahasiswa
     public function searchMahasiswa(mixed $request): void {
-        if ($request->method === "POST") {
-            $nim = trim($_POST['nim'] ?? '');
+        if ($request->method === "GET") {
+            $nim = $_GET['nim'];
 
             if ($nim === '') {
                 echo $this->templates->render('mahasiswa/berita/404');

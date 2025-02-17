@@ -35,8 +35,8 @@ Flight::before('start', function() {
 Flight::set('mahasiswaController', new MahasiswaController());
 
 // Routing
-Flight::route('/', [MahasiswaController::class, 'index']);
-Flight::route('/register', [MahasiswaController::class, 'register']);
+Flight::route('GET /', [MahasiswaController::class, 'index']);
+Flight::route('GET /register', [MahasiswaController::class, 'register']);
 
 // Menyimpan hasil registrasi
 Flight::route('POST /register/store', function() {
@@ -59,7 +59,7 @@ Flight::route('POST /data/mahasiswa/update', function() {
 });
 
 // Memperbarui data mahasiswa
-Flight::route('POST /data/mahasiswa/cari', function() {
+Flight::route('GET /data/mahasiswa/cari', function() {
     Flight::get('mahasiswaController')->searchMahasiswa(Flight::request());
 });
 

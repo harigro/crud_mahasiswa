@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="./data/mahasiswa/cari">
+                <form method="GET" action="./data/mahasiswa/cari">
                     <div class="mb-3">
                         <label class="form-label">NIM</label>
                         <input type="number" name="nim" class="form-control">
