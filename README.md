@@ -49,13 +49,15 @@ Aplikasi CRUD untuk mengelola data data mahasiswa menggunakan Flight PHP sebagai
 4. **Hapus Data Mahasiswa** - Menghapus data mahasiswa dari daftar.
 5. **Cari Data Mahasiswa** - Pencarian data mahasiswa dari daftar.
 6. **Registasi Pengguna** - Pengguna diharuskan untuk melakukan registrasi untuk bisa menggunakan aplikasi.
-7. **Pemberitahuan Pengguna** - Mengarahkan pengguna ke halaman tertentu jika data tidak ditemukan atau terjadi kesalahan sistem.
-8. **Menggunakan Jalur Dinamis** - Aplikasi ini menggunakan `jalur dinamis` yang dibuat oleh `bahasa PHP` untuk mempermudah menemukan jalur folder css dan js serta bisa digunakan baik secara luring maupun daring.
+7. **Sesi Cookie** - Sesi pengguna disimpan ke cookie browser.
+8. **Pemberitahuan Pengguna** - Mengarahkan pengguna ke halaman tertentu jika data tidak ditemukan atau terjadi kesalahan sistem.
+9. **Menggunakan Jalur Dinamis** - Aplikasi ini menggunakan `jalur dinamis` yang dibuat oleh `bahasa PHP` untuk mempermudah menemukan jalur folder css dan js serta bisa digunakan baik secara luring maupun daring.
 
 ## Fitur Keamanan
 1. **Mencegah Serangan CSRF** - Menambahkan pelindungan dari `serangan csrf` pada saat login.
 2. **Mencegah Serangan XSS** - Menambahkan pelindungan dari `serangan xss` pada saat ingin menampilkan data ke pengguna.
 3. **Mencegah Serangan SQL Injeksi** - Menambahkan pelindungan dari `serangan sql injeksi` menggunakan pernyataan prepared.
+4. **Mencegah Manipulasi Cookie** - Cookie yang disimpan diamankan sedemiakan rupa untuk menghindari dari serangan csrf dan javascript.
 
 ## Persyaratan
 
