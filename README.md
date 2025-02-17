@@ -41,7 +41,7 @@ Aplikasi CRUD untuk mengelola data data mahasiswa menggunakan Flight PHP sebagai
 ├── composer.json
 ```
 
-## Fitur
+## Fitur Utama
 
 1. **Tambah Data Mahasiswa** - Menambahkan data mahasiswa baru ke dalam database.
 2. **Tampilkan Data Mahasiswa** - Menampilkan daftar data mahasiswa yang telah tersimpan.
@@ -51,6 +51,11 @@ Aplikasi CRUD untuk mengelola data data mahasiswa menggunakan Flight PHP sebagai
 6. **Registasi Pengguna** - Pengguna diharuskan untuk melakukan registrasi untuk bisa menggunakan aplikasi.
 7. **Pemberitahuan Pengguna** - Mengarahkan pengguna ke halaman tertentu jika data tidak ditemukan atau terjadi kesalahan sistem.
 8. **Menggunakan Jalur Dinamis** - Aplikasi ini menggunakan `jalur dinamis` yang dibuat oleh `bahasa PHP` untuk mempermudah menemukan jalur folder css dan js serta bisa digunakan baik secara luring maupun daring.
+
+## Fitur Keamanan
+1. **Mencegah Serangan CSRF** - Menambahkan pelindungan dari `serangan csrf` pada saat login.
+2. **Mencegah Serangan XSS** - Menambahkan pelindungan dari `serangan xss` pada saat ingin menampilkan data ke pengguna.
+3. **Mencegah Serangan SQL Injeksi** - Menambahkan pelindungan dari `serangan sql injeksi` menggunakan pernyataan prepared.
 
 ## Persyaratan
 
